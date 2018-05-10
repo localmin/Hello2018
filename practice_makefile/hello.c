@@ -3,7 +3,11 @@
 
 void edajima(void);
 
-int main(int argc, char* argv[]) {
+void edajima(void){
     edajima();
+}
+
+int main(int argc, char* argv[]) {
+
     return 0;
 }

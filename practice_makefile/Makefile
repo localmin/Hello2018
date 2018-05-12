@@ -1,22 +1,15 @@
 # Makefile
 .PHONY: all
-all: hello raiden
+all: jeki
 
-hello: hello.o edajima.o
-		gcc -o hello hello.o edajima.o 
+jeki: jeki.o
+		gcc -o jeki jeki.o
 
-hello.o: hello.c 
-		gcc -c hello.c 
+jeki.o: jeki.c
+		gcc -c jeki.c
 
-edajima.o: edajima.c 
-		gcc -c edajima.c 
-
-raiden: raiden.o
-		gcc -o raiden raiden.o
-
-raiden.o: raiden.c
-		gcc -c raiden.c
+jeki.o: jeki.h 
 
 .PHONY: clean
 clean:
-		rm -f hello hello.o edajima.o raiden raiden.o
+		rm -f jeki jeki.o 

@@ -1,15 +1,17 @@
 # Makefile
-.PHONY: all
-all: jeki
+objs = hello.c edajima.o 
+CC = gcc
 
-jeki: jeki.o
-		gcc -o jeki jeki.o
+hello: $(objs)
+		$(CC) -o hello $(objs) 
 
-jeki.o: jeki.c
-		gcc -c jeki.c
+hello.o: hello.c 
+		$(CC) -c hello.c 
 
-jeki.o: jeki.h 
+edajima.o: edajima.c 
+		$(CC) -c edajima.c 
+
 
 .PHONY: clean
 clean:
-		rm -f jeki jeki.o 
+		$(RM) -f hello $(objs) 

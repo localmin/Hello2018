@@ -7,11 +7,10 @@ CFLAGS= -Wall -g
 $(hello): $(objs)
 		$(CC) -o $@ $^ 
 
-hello.o: hello.c 
-		$(CC) $(CFLAGS) -c $< 
+.SUFFIXES: .c .o
 
-edajima.o: edajima.c 
-		$(CC) $(CFLAGS) -c $< 
+.c .o : 
+	$(CC) $(CFLAGS) -c $<
 
 .PHONY: clean
 clean:

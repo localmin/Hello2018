@@ -15,6 +15,8 @@ int main(int argc, char **argv){
 
     if(fd < 0){
         fprintf(stderr, "can not open %s : %s\n", argv[1], strerror(errno));
+// perror はvoidを返す(error messageは標準エラー出力), strerrorは文字列を返す
+// printfは出力先をstdoutに固定している 
         exit(1);
     }
     while((nread = read(fd, buf, sizeof(buf))) > 0) //0(標準入力からファイルへ)

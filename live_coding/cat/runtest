@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+gcc -o my_cat my_cat.c
+diff <(./my_cat my_cat.c) my_cat.c
+echo Done!

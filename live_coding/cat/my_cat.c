@@ -7,10 +7,18 @@
 #include <string.h>
 #include <errno.h>
 
+static void usage(char *progname){
+    fprintf(stderr, "Usage : cat [file]\n");
+    exit(1);
+}
+
 int main(int argc, char **argv){
     uint8_t buf[4096];// 4096 = (0x1000)_16t uint8_t: unsigned short int :16bit
     ssize_t nread; //size_tはmallocに渡される引数の型であり、ssize_tはread()とwrite()の戻り値の型です
     int fd = STDIN_FILENO; 
+
+    if(argc > 2)
+        usage(argv[1]);
 
     if(argc > 1){
         fd = open(argv[1], O_RDONLY);//file opne fdは成功したらファイルハンドル，エラー時は-1を返す

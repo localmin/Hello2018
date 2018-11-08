@@ -22,7 +22,7 @@ int main(int argc, char **argv){
             exit(1);
         }
     }
-    while((nread = read(fd, buf, sizeof(buf))) > 0) //0(標準入力からファイルへ)
+    while((nread = read(fd, buf, sizeof(buf))) > 0) //ファイルディスクリプタを読み込む
         write(1, buf, nread);
     return 0;
 }

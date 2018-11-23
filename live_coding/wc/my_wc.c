@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int nlines = 0;
 
@@ -22,7 +23,21 @@ static void wc(FILE *in, char *filename){
 }
 
 int main(int argc, char **argv){
-    wc(stdin, "foo");
-    printf("%d\n", nlines);
+    if(argc == 1){
+        wc(stdin, NULL);
+        exit(0);    
+    }
+
+    for(char **p = argv + 1; *p; p++){
+        FILE *in = fopen(*p, "r");
+        if(!in){
+            perror("fopen");
+            exit(1);
+        }
+        wc(in, *p);
+    }
+
+    if(argc > 2)
+        printf("%d\n", nlines);
     return 0;
 }

@@ -3,7 +3,7 @@
 
 int nlines = 0;
 
-static void wc(FILE *in, char *filename){
+static void wc(FILE* in, char* filename){
     char buf[4096];
     int nl = 0;
 
@@ -22,14 +22,14 @@ static void wc(FILE *in, char *filename){
 
 }
 
-int main(int argc, char **argv){
+int main(int argc, char** argv){
     if(argc == 1){
         wc(stdin, NULL);
         exit(0);    
     }
 
-    for(char **p = argv + 1; *p; p++){
-        FILE *in = fopen(*p, "r");
+    for(char** p = argv + 1; *p; p++){
+        FILE* in = fopen(*p, "r");
         if(!in){
             perror("fopen");
             exit(1);

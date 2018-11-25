@@ -38,6 +38,6 @@ int main(int argc, char** argv){
     }
 
     if(argc > 2)
-        printf("%d\n", nlines);
+        printf("%d total\n", nlines);
     return 0;
 }

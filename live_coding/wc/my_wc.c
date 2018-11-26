@@ -1,24 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <stdbool.h>
 
 int nlines = 0;
+int nwords = 0;
+int nbytes = 0;
 
 static void wc(FILE* in, char* filename){
     char buf[4096];
+    bool inword = false;
     int nl = 0;
+    int nw = 0;
+    int nb = 0;
 
     size_t nread;
-    while((nread = fread(buf, 1, sizeof(buf), in)) > 0)
-        for(size_t i = 0; i < nread; i++)
-            if(buf[i] == '\n')
+    while((nread = fread(buf, 1, sizeof(buf), in)) > 0){
+        nb += nread;
+        for(size_t i = 0; i < nread; i++){
+            char c = buf[i];
+            if(c == '\n')
                 nl++;
 
+            if(inword && !isalpha(c)){
+                inword = false;
+            }else if(!inword && isalpha(c)){
+                inword = true;
+                nw++;
+            }   
+        }   
+    }
+
     if(filename)
-        printf("%d %s\n", nl, filename);
+        printf("%d %d %d %s\n", nl, nw, nb, filename);
     else
-        printf("%d \n", nl);
+        printf("%d %d %d \n", nl, nw, nb);
 
     nlines += nl;
+    nwords += nw;
+    nbytes += nb;
 
 }
 
@@ -38,6 +58,6 @@ int main(int argc, char** argv){
     }
 
     if(argc > 2)
-        printf("%d total\n", nlines);
+        printf("%d %d %d total\n", nlines, nwords, nbytes);
     return 0;
 }

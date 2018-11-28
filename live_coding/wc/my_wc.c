@@ -32,9 +32,9 @@ static void wc(FILE* in, char* filename){
     }
 
     if(filename)
-        printf("%d %d %d %s\n", nl, nw, nb, filename);
+        printf("% 8d% 8d% 8d %s\n", nl, nw, nb, filename);
     else
-        printf("%d %d %d \n", nl, nw, nb);
+        printf("% 8d% 8d% 8d \n", nl, nw, nb);
 
     nlines += nl;
     nwords += nw;
@@ -58,6 +58,6 @@ int main(int argc, char** argv){
     }
 
     if(argc > 2)
-        printf("%d %d %d total\n", nlines, nwords, nbytes);
+        printf("% 8d% 8d% 8d total\n", nlines, nwords, nbytes);
     return 0;
 }

@@ -34,7 +34,7 @@ static void wc(FILE* in, char* filename){
     if(filename)
         printf("% 8d% 8d% 8d %s\n", nl, nw, nb, filename);
     else
-        printf("% 8d% 8d% 8d \n", nl, nw, nb);
+        printf("% 8d% 8d% 8d\n", nl, nw, nb);
 
     nlines += nl;
     nwords += nw;

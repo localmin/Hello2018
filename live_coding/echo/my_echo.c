@@ -19,6 +19,10 @@ static void unescape(char* p){
 }
 
 int main(int argc, char** argv){
+    if(argc == 1)
+        return 0;
+
+
     char** args = argv + 1;
     for(char** p = argv + 1; *p; p++)
         printf("%s%s",(p == argv ? "": " " ), *p);

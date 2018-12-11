@@ -32,12 +32,10 @@ int main(int argc, char** argv){
                 printf(" ");
             unescape(*p);
         }
-
     }else{
         for(char** p = args; *p; p++)
             printf("%s%s",(p == args ? "": " " ), *p);
     }
-
     printf("\n");
     return 0;
 }

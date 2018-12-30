@@ -9,6 +9,19 @@ int main(int argc, char* argv[]){
     }else{
         fp = fopen(argv[1], "rb");
     }
-
+    char** lines = NULL;
+    int num_lines = 0;
+    char* line = NULL;
+    size_t len = 0;
+    for(; getline(&line, &len, fp) > 0; line = NULL){
+        num_lines++;
+        lines = (char**)realloc(lines, sizeof(char*) * num_lines);
+        lines[num_lines - 1] = line;
+    }
     fclose(fp);
+
+    int i;
+    for(i = 0; i < num_lines; i++){
+        printf("%s", lines[i]);
+    }
 }

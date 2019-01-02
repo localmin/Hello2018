@@ -24,4 +24,5 @@ int main(int argc, char* argv[]){
     for(i = 0; i < num_lines; i++){
         printf("%s", lines[i]);
     }
+    return 0;
 }

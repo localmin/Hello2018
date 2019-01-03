@@ -1,4 +1,5 @@
-#define _GNU_SOURCE
+//#define _GNU_SOURCE
+// getline はもともとGNU拡張だが標準化された
 #include <stdio.h>
 #include <stdlib.h>
 

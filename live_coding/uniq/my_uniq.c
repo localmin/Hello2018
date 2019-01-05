@@ -2,6 +2,7 @@
 // getline はもともとGNU拡張だが標準化された
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char* argv[]){
     FILE* fp = NULL;
@@ -22,8 +23,11 @@ int main(int argc, char* argv[]){
     fclose(fp);
 
     int i;
+    const char* prev_line = NULL;
     for(i = 0; i < num_lines; i++){
-        printf("%s", lines[i]);
+        if(!prev_line || strcmp(prev_line, lines[i]))
+            printf("%s", lines[i]);
+        prev_line = lines[i];
     }
     return 0;
 }

@@ -9,7 +9,7 @@ int main(int argc, char* argv[]){
     if(argc < 2){
         fp = stdin;
     }else{
-        fp = fopen(argv[1], "rb");
+        fp = fopen(argv[1], "rb"); // read binary 
     }
     char** lines = NULL;
     int num_lines = 0;

@@ -21,13 +21,15 @@ int main(int argc, char* argv[]){
     // reallocでlinesのメモリの割り当て
     // reallocでは差分は初期化されない
         lines = (char**)realloc(lines, sizeof(char*) * num_lines);
-        lines[num_lines - 1] = line;
+        lines[num_lines - 1] = line;// line != lines
     }
     fclose(fp);
 
     int i;
     const char* prev_line = NULL;
     for(i = 0; i < num_lines; i++){
+        //隣り合った行だけ削除(表示)
+        //if は0以外の値が入ったら真値
         if(!prev_line || strcmp(prev_line, lines[i]))
             printf("%s", lines[i]);
         prev_line = lines[i];

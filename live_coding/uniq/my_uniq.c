@@ -16,7 +16,10 @@ int main(int argc, char* argv[]){
     char* line = NULL;
     size_t len = 0;
     for(; getline(&line, &len, fp) > 0; line = NULL){
+    // &lenを0にセットしかつline = MULLでバッファを確保
         num_lines++;
+    // reallocでlinesのメモリの割り当て
+    // reallocでは差分は初期化されない
         lines = (char**)realloc(lines, sizeof(char*) * num_lines);
         lines[num_lines - 1] = line;
     }
@@ -29,5 +32,6 @@ int main(int argc, char* argv[]){
             printf("%s", lines[i]);
         prev_line = lines[i];
     }
+    free(lines);
     return 0;
 }

@@ -1,10 +1,12 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+//const void*はマスト
 int cmp(const void* a, const void* b){
     return strcmp(*(const char**)a,*(const char**)b );
 }
+
 int main(int argc, char* argv[]){
     FILE* fp = NULL;
     if(argc < 2){
@@ -23,13 +25,13 @@ int main(int argc, char* argv[]){
     }
     fclose(fp);
 
-
+    // クイックソート
     qsort(lines, num_lines, sizeof(char*), cmp);
     int i;
-    const char* prev_line = NULL;
+    const char* prev_line = NULL;//const char : アドレス変更可，中身は不可
     for(i = 0; i < num_lines; i++){
-        if(!prev_line || strcmp(prev_line, lines[i]))
-            printf("%s", lines[i]);
+        printf("%s", lines[i]);
     }
+    free(lines);
     return 0;
 }

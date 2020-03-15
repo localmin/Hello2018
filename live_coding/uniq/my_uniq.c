@@ -26,7 +26,7 @@ int main(int argc, char* argv[]){
     fclose(fp);
 
     int i;
-    const char* prev_line = NULL;
+    const char* prev_line = NULL;//const char : アドレス変更可，中身は不可
     for(i = 0; i < num_lines; i++){
         //隣り合った行だけ削除(表示)
         //if は0以外の値が入ったら真値
